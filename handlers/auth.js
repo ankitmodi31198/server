@@ -1,5 +1,6 @@
 // local modules
 const db = require('../models')
+const passwordHash = require('password-hash')
 
 exports.registerUser = async (req, res, next) => {
     try {
@@ -8,7 +9,7 @@ exports.registerUser = async (req, res, next) => {
         var newUser = {
             cred: {
                 username: newUserBody.username,
-                password: newUserBody.password
+                password: passwordHash.generate(newUserBody.password)
             },
             details: {
                 name: newUserBody.name,
