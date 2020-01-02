@@ -4,9 +4,9 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 
-// const db = require('./models')
-// const handle = require('./handlers')
-// const routes = require('./routes')
+const db = require('./models')
+const handle = require('./handlers')
+const routes = require('./routes')
 
 const app = express()
 // const port = process.env.PORT
@@ -30,8 +30,9 @@ app.get('/', (req, res, next) => {
 // app.use('/auth', routes.auth)
 // app.use('/food', routes.food)
 // app.use('/user', routes.user)
+app.use('/test', routes.test)
 
-// app.use(handle.notFound)
-// app.use(handle.errors)
+app.use(handle.notFound)
+app.use(handle.errors)
 
 app.listen(port, console.log(`Server started on port ${port}...`))
