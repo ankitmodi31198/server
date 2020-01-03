@@ -14,5 +14,12 @@ router.get('/:fid', handle.viewFood)
 * find my food item
 */
 router.get('/:fid/:uid', handle.viewMyFood)
-
+/*
+*find all foods
+*/
+router.get('/', handle.viewFoods)
+/*
+* delete the food
+*/
+router.get('/delete/:fid/:uid', handle.deleteMyFood)
 module.exports = router

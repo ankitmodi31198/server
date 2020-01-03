@@ -86,3 +86,19 @@ exports.viewMyFood = async (req, res, next) => {
         console.log(err)
     }
 }
+
+/* 
+* @function = view all foods
+* @uses = food data
+* @created = @03-01-2020 -jash
+*/
+exports.viewFoods = async (req, res, next) => {
+    try {
+        var foods = await db.Food.find()
+
+        res.json({foods, success: true, msg: "all food items here."})
+    } catch (err) {
+        err.status = 400
+        console.log(err)
+    }
+}
