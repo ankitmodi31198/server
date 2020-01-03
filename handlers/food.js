@@ -102,3 +102,24 @@ exports.viewFoods = async (req, res, next) => {
         console.log(err)
     }
 }
+
+/* 
+* @function = delete my food
+* @uses = food data
+* @created = @03-01-2020 -jash
+*/
+exports.deleteMyFood = async (req, res, next) => {
+    try {
+        var {fid: foodId, uid: userId} = req.params
+
+        await db.Food.deleteOne({
+            _id: foodId,
+            user: userId
+        })
+
+        res.json({success: true, msg: "food deleted successfully"})
+    } catch (err) {
+        err.status = 400
+        console.log(err)
+    }
+}
