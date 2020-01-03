@@ -1,5 +1,5 @@
-// module.exports.seed = require('./seed')
+module.exports.seed = require('./seed')
 module.exports.auth = require('./auth')
-// module.exports.food = require('./food')
+module.exports.food = require('./food')
 // module.exports.user = require('./user')
 module.exports.test = require('./test')

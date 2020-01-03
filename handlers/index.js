@@ -1,7 +1,7 @@
 module.exports = {
-    // ...require('./seed'),
+    ...require('./seed'),
     ...require('./auth'),
-    // ...require('./food'),
+    ...require('./food'),
     // ...require('./user'),
     ...require('./test')
 }

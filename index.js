@@ -26,9 +26,9 @@ app.get('/', (req, res, next) => {
     res.json({hello: 'World'})
 })
 
-// app.use('/seed', routes.seed)
+app.use('/seed', routes.seed)
 app.use('/auth', routes.auth)
-// app.use('/food', routes.food)
+app.use('/food', routes.food)
 // app.use('/user', routes.user)
 app.use('/test', routes.test)
 
