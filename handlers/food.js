@@ -41,3 +41,48 @@ exports.createFood = async (req, res, next) => {
         console.log(err)
     }
 }
+
+/* 
+* @function = view the particular food item
+* @uses = food data anyone can see
+* @created = @03-01-2020 -jash
+*/
+exports.viewFood = async (req, res, next) => {
+    try {
+        // send the food id of the item to view from the front-end
+        var foodId = req.params.fid
+
+        var food = await db.Food.find({
+            _id: foodId
+        })
+        res.json({food, success: true, msg: "food item found"})
+    } catch (err) {
+        err.status = 400
+        console.log(err)
+    }
+}
+
+/* 
+* @function = view MY particular food item
+* @uses = food data only my food
+* @created = @03-01-2020 -jash
+*/
+exports.viewMyFood = async (req, res, next) => {
+    try {
+        var {fid: foodId, uid: userId} = req.params
+
+        var food = await db.Food.findOne({
+            _id: foodId,
+            user: userId
+        })
+
+        if (food.length !== 0) {
+            res.json({food, success: true, msg: "your food item found."})
+        } else {
+            res.json({success: false, msg: "no such food item uploaded by you."})
+        }
+    } catch (err) {
+        err.status = 400
+        console.log(err)
+    }
+}
